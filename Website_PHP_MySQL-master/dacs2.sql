@@ -316,7 +316,7 @@ INSERT INTO `tbl_report` (`id_RP`, `name`, `mail`, `location`, `noidung`, `latit
 
 CREATE TABLE `tbl_user` (
   `idUser` int(11) NOT NULL,
-  `tenUser` varchar(255) NOT NULL,
+  `tenUser` varchar(255) NOT NULL DEFAULT 'guest',
   `accountUser` varchar(255) NOT NULL,
   `passUser` varchar(255) NOT NULL,
   `emailUser` varchar(255) NOT NULL,
