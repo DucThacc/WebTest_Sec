@@ -14,6 +14,9 @@
 
     if(isset($_GET['pg'])&&($_GET['pg']!="")){
         switch ($_GET['pg']) {
+            case 'login_register_form':
+                include ("view/login-register-form.php");
+                break;
             case 'dangnhaptaikhoan':
                 if(isset($_POST['user']) && isset($_POST['pass'])){
                     $user = $_POST['user'];
