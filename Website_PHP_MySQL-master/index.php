@@ -58,15 +58,14 @@
                     include ("view/slider.php");
                     include ("view/home.php");
                 }
-
                 include ("view/footer.php");
-                    }
-                    else{
-                        $thongbao1= 'Tài khoản or mật khẩu sai.';
-                    }
-                }
-                include ("view/login-register-form.php");
-                break;
+            }
+            else{
+                $thongbao1= 'Tài khoản or mật khẩu sai.';
+            }
+        }
+        include ("view/login-register-form.php");
+        break;
 
             
 
