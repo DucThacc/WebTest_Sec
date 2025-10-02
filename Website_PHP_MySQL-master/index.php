@@ -28,44 +28,9 @@
                     $kyw="";
                 }
 
-                include ("view/header.php");
-
-                if(isset($_GET['pg'])&&($_GET['pg']!="")){
-                    switch ($_GET['pg']) {
-                        case 'product':
-                            // ...existing code...
-                            include ("view/sanpham.php");
-                            break;
-                        case 'search':
-                            // ...existing code...
-                            include ("view/sanpham.php");
-                            break;
-                        case 'chitietsanpham':
-                            // ...existing code...
-                            include ("view/chitietsanpham.php");
-                            break;
-                        // ...other cases...
-                        default:
-                            $listpet=loadall_pet_home();
-                            $listsanphamhome=loadall_sanpham_home();
-                            include ("view/slider.php");
-                            include ("view/home.php");
-                            break;
-                    }
-                } else {
-                    $listpet=loadall_pet_home();
-                    $listsanphamhome=loadall_sanpham_home();
-                    include ("view/slider.php");
-                    include ("view/home.php");
-                }
-                include ("view/footer.php");
-            }
-            else{
-                $thongbao1= 'Tài khoản or mật khẩu sai.';
-            }
-        }
-        include ("view/login-register-form.php");
-        break;
+                // ...existing code...
+                include ("view/sanpham.php");
+                break;
 
             
 
