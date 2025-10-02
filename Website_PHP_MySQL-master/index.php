@@ -35,11 +35,19 @@
                 break;
 
             case 'dangkytaikhoan':
-                if(isset($_POST['accountuser']) && isset($_POST['passuser'])){
-                    $accountuser = $_POST['accountuser'];
-                    $passuser = $_POST['passuser'];
-                    insert_taikhoan_nguoidung($accountuser, $passuser);
-                    echo '<script>alert("Đăng ký thành công, hãy đăng nhập!");</script>';
+                $thongbao = '';
+                if(isset($_POST['btn_dangky'])){
+                    $username = $_POST['username'] ?? '';
+                    $password = $_POST['password'] ?? '';
+                    $password_a = $_POST['password_a'] ?? '';
+                    if($username == '' || $password == '' || $password_a == ''){
+                        $thongbao = 'Vui lòng nhập đầy đủ thông tin.';
+                    }elseif($password !== $password_a){
+                        $thongbao = 'Mật khẩu nhập lại không khớp.';
+                    }else{
+                        insert_taikhoan_nguoidung($username, $password);
+                        $thongbao = 'Đăng ký thành công, hãy đăng nhập!';
+                    }
                     include ("view/login-register-form.php");
                 }else{
                     include ("view/login-register-form.php");
