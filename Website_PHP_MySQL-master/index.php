@@ -14,6 +14,34 @@
 
     if(isset($_GET['pg'])&&($_GET['pg']!="")){
         switch ($_GET['pg']) {
+            case 'dangnhaptaikhoan':
+                if(isset($_POST['user']) && isset($_POST['pass'])){
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $checkuser = checkuser($user, $pass);
+                    if(is_array($checkuser)){
+                        $_SESSION['user'] = $checkuser;
+                        echo '<meta http-equiv="refresh" content="0;url=index.php">';
+                    }else{
+                        $thongbao1 = 'Tài khoản hoặc mật khẩu sai.';
+                        include ("view/login-register-form.php");
+                    }
+                }else{
+                    include ("view/login-register-form.php");
+                }
+                break;
+
+            case 'dangkytaikhoan':
+                if(isset($_POST['accountuser']) && isset($_POST['passuser'])){
+                    $accountuser = $_POST['accountuser'];
+                    $passuser = $_POST['passuser'];
+                    insert_taikhoan_nguoidung($accountuser, $passuser);
+                    echo '<script>alert("Đăng ký thành công, hãy đăng nhập!");</script>';
+                    include ("view/login-register-form.php");
+                }else{
+                    include ("view/login-register-form.php");
+                }
+                break;
             //sanpham
             case 'product':
                 // Làm tìm kiếm theo giá tiền (chưa làm)
