@@ -6,7 +6,7 @@ function insert_taikhoan($tenuser,$accountuser,$passuser,$mailuser,$teluser,$add
 }
 
 function insert_taikhoan_nguoidung($accountuser,$passuser){
-    $sql="INSERT INTO tbl_user(tenUser,accountUser,passUser,emailUser,addressUser,telUser) values ('guest','$accountuser','$passuser','','','') ";
+    $sql="INSERT INTO tbl_user(tenUser,accountUser,passUser,emailUser,addressUser,telUser,decen) values ('guest','$accountuser','$passuser','','','',0) ";
     pdo_execute($sql);
 }
 
