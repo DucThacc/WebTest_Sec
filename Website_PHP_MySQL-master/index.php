@@ -27,8 +27,10 @@
                 }else{
                     $kyw="";
                 }
-
-                // ...existing code...
+                $listdanhmuc = loadall_danhmuc();
+                $listsanpham = loadall_sanpham($kyw, $iddm);
+                $hienthisotrang = '';
+                // Nếu có phân trang, hãy gán $hienthisotrang ở đây
                 include ("view/sanpham.php");
                 break;
 
