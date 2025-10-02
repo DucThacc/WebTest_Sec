@@ -28,93 +28,38 @@
                     $kyw="";
                 }
 
-                $tongsp=count_sanpham($kyw,$iddm);
-                if(!isset($_GET['page'])){
-                    $page=1;
-                }else{
-                    $page=$_GET['page'];
-                }
-                $soluongsp=6;
-                $listsanpham=loadall_list_sanpham($kyw,$iddm,$page,$soluongsp);
-                $hienthisotrang=hien_thi_so_trang($tongsp,$soluongsp);
-                $listdanhmuc=loadall_danhmuc();            
-                // $listsanpham=loadall_sanpham('',$iddm);
-                include ("view/sanpham.php");
-                break;
+                include ("view/header.php");
 
-            case 'search':
-                if(isset($_POST['timkiem']) && $_POST['timkiem']){
-                    $kyw=$_POST['kyw'];
-                }
-                else{
-                    $kyw='';
-                }
-                if(isset($_GET['iddm'])&&($_GET['iddm']>0)){
-                    $iddm=$_GET['iddm'];
-                }else{
-                    $iddm=0;
-                }
-
-                if(!isset($_GET['page'])){
-                    $page=1;
-                }else{
-                    $page=$_GET['page'];
-                }
-                $tongsp=count_sanpham($kyw,$iddm);
-                $soluongsp=6;
-                $listsanpham=loadall_list_sanpham($kyw,$iddm,$page,$soluongsp);
-                $hienthisotrang=hien_thi_so_trang($tongsp,$soluongsp);
-                $listdanhmuc=loadall_danhmuc();
-                $listsanpham=loadall_sanpham($kyw,0);
-                include ("view/sanpham.php");
-                break;   
-
-            case 'chitietsanpham':
-                if((isset($_GET['idsp']))&&($_GET['idsp']>0)){
-                    $id=$_GET['idsp'];
-                    $sanpham=loadone_sanpham($id);
-                    $tendanhmuc=load_ten_dm($sanpham['idDM']);
-                    $sp_cung_loai=load_sanpham_cungloai($id,$sanpham['idDM']);
-                }
-                include ("view/chitietsanpham.php");
-                break;
-            
-            //Login    
-
-            case 'login_register_form':
-                include ("view/login-register-form.php");
-                break;
-                
-            case 'dangkytaikhoan':
-                if(isset($_POST['btn_dangky']) && $_POST['btn_dangky']){
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
-                    $passwordRepeat = $_POST['password_a'];
-                    if ($password == $passwordRepeat) {                       
-                        insert_taikhoan_nguoidung($username,$password);
-                        $thongbao= 'Đăng ký thành công. Vui lòng đăng nhập';
-                    }else{
-                        $thongbao='<span class="required">*Mật khẩu không giống nhau vui lòng đăng ký lại</span>';
+                if(isset($_GET['pg'])&&($_GET['pg']!="")){
+                    switch ($_GET['pg']) {
+                        case 'product':
+                            // ...existing code...
+                            include ("view/sanpham.php");
+                            break;
+                        case 'search':
+                            // ...existing code...
+                            include ("view/sanpham.php");
+                            break;
+                        case 'chitietsanpham':
+                            // ...existing code...
+                            include ("view/chitietsanpham.php");
+                            break;
+                        // ...other cases...
+                        default:
+                            $listpet=loadall_pet_home();
+                            $listsanphamhome=loadall_sanpham_home();
+                            include ("view/slider.php");
+                            include ("view/home.php");
+                            break;
                     }
+                } else {
+                    $listpet=loadall_pet_home();
+                    $listsanphamhome=loadall_sanpham_home();
+                    include ("view/slider.php");
+                    include ("view/home.php");
                 }
-                include ("view/login-register-form.php");
-                break;
 
-
-            case 'dangnhaptaikhoan':
-                if(isset($_POST['dangnhap']) && ($_POST['dangnhap'])){
-                    $user=$_POST['user'];
-                    $pass=$_POST['pass'];
-                    $checkuser=checkuser($user,$pass);
-                    if((is_array($checkuser))){
-                        $_SESSION['user']=$checkuser;
-                        extract($_SESSION['user']);
-                        if($decen == 1){
-                            echo '<meta http-equiv="refresh" content="0;url=admin/">';
-                        }else{
-                            echo '<meta http-equiv="refresh" content="0;url=index.php">';
-                        }
-                                
+                include ("view/footer.php");
                     }
                     else{
                         $thongbao1= 'Tài khoản or mật khẩu sai.';
