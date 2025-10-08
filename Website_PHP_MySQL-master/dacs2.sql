@@ -319,9 +319,9 @@ CREATE TABLE `tbl_user` (
   `tenUser` varchar(255) NOT NULL DEFAULT 'guest',
   `accountUser` varchar(255) NOT NULL,
   `passUser` varchar(255) NOT NULL,
-  `emailUser` varchar(255) NOT NULL DEFAULT '',
-  `addressUser` text NOT NULL DEFAULT '',
-  `telUser` varchar(255) NOT NULL DEFAULT '',
+  `emailUser` varchar(255) NOT NULL,
+  `addressUser` text NOT NULL,
+  `telUser` varchar(255) NOT NULL,
   `decen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
