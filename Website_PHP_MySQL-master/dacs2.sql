@@ -322,7 +322,7 @@ CREATE TABLE `tbl_user` (
   `emailUser` varchar(255) NOT NULL DEFAULT '',
   `addressUser` text NOT NULL DEFAULT '',
   `telUser` varchar(255) NOT NULL DEFAULT '',
-  `decen` int(11) NOT NULL DEFAULT 0
+  `decen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
